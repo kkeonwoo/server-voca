@@ -21,10 +21,10 @@ MongoClient.connect(process.env.MONGO_URL, { useUnifiedTopology: true }, (err, c
 });
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.get("https://keonwoo.herokuapp.com//", (req, res) => {
+app.get("https://keonwoo.herokuapp.com/", (req, res) => {
   res.send("hello voca-app");
 });
-app.post("https://keonwoo.herokuapp.com//day/add", (req, res) => {
+app.post("https://keonwoo.herokuapp.com/day/add", (req, res) => {
   db.collection("counter").findOne({ name: "count" }, (err, result) => {
     const insertData = {
       day: req.body.day,
@@ -41,7 +41,7 @@ app.post("https://keonwoo.herokuapp.com//day/add", (req, res) => {
   });
 });
 
-app.post("https://keonwoo.herokuapp.com//voca/add", (req, res) => {
+app.post("https://keonwoo.herokuapp.com/voca/add", (req, res) => {
   db.collection("counter").findOne({ name: "count" }, (err, result) => {
     const insertData = {
       day: req.body.day,
@@ -61,14 +61,14 @@ app.post("https://keonwoo.herokuapp.com//voca/add", (req, res) => {
   });
 });
 
-app.get("https://keonwoo.herokuapp.com//days", (req, res) => {
+app.get("https://keonwoo.herokuapp.com/days", (req, res) => {
   db.collection("days")
     .find()
     .toArray((err, result) => {
       res.json(result); //   페이지 내가 만들어서 보내주기
     });
 });
-app.get("https://keonwoo.herokuapp.com//voca/:day", (req, res) => {
+app.get("https://keonwoo.herokuapp.com/voca/:day", (req, res) => {
   console.log(req.params.day);
   const _day = parseInt(req.params.day);
   // db연결하고 해당되는것의 모든 데이터를 받아서 json으로 리턴하기...
