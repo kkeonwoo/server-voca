@@ -92,11 +92,7 @@ app.put("/voca/:id", (req, res) => {
   const _id = parseInt(req.params.id);
   const _isDone = Boolen(req.body.isDone);
   db.collection("vocas").updateOne({ id: _id }, { $set: { isDone: _isDone } }, (err, result) => {
-    if (err) {
-      console.log(err);
-    } else {
-      res.json({ update: "ok" });
-    }
+    res.json({ update: "ok" });
   });
 });
 
