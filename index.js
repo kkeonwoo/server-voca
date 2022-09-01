@@ -47,7 +47,7 @@ app.post("/voca/add", (req, res) => {
       day: req.body.day,
       eng: req.body.eng,
       kor: req.body.kor,
-      isDone: req.body.isDone,
+      isDone: parseBoolen(req.body.isDone),
       id: result.vocasTotal,
     };
     db.collection("vocas").insertOne(insertData, (err, result) => {
